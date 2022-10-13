@@ -19,11 +19,18 @@ export default NextAuth({
               accept: '*/*',
               'Content-Type': 'application/json'
             }
-          })  
+          })
+          console.log(user)
           if (user) {
+            console.log(
+              "User found",
+            )
             return {status: 'success', data: user}
           } 
         } catch (e) {
+          console.log(
+            "User not found",  e
+          )
           const errorMessage = e
           // Redirecting to the login page with error message          in the URL
           throw new Error(errorMessage + '&email=' + credentials.username + '&password=' + credentials.password)
